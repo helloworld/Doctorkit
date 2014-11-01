@@ -39,6 +39,12 @@ Router.route('/viewPatient/:_id', function() {
         }
     });
 });
+
+Router.route('/messagePatient', function() {
+    name: 'messagePatient';
+    this.layout('ApplicationLayout');
+    this.render('messagePatient');
+});
 // Router.route('/mypatients/:test', function() {
 //     this.layout('ApplicationLayout');
 //     this.render('viewpatient');
@@ -140,3 +146,17 @@ Template.viewPatient.events({
         var prestext = $("#prescriptionText").val();
     }
 })
+Template.messagePatient.helpers({
+    users: function() {
+        return Patients.find({
+            drkey:Meteor.user()._id
+        });
+    }
+});
+Template.patients.helpers({
+    users: function() {
+        return Patients.find({
+            drkey:Meteor.user()._id
+        });
+    }
+});
