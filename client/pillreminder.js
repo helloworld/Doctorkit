@@ -89,7 +89,7 @@ Template.addPatient.events({
         var firstname = $("#firstname").val();
         var lastname = $("#lastname").val();
         var gender = $("#gender").val();
-        var height = $("#height").val();
+        var height = $("#feet").val()+'\' ' + $("#inches").val()+'\"';
         var weight = $("#weight").val();
         var bloodtype = $("#bloodtype").val();
         var phonenumber = $("#phonenumber").val();
