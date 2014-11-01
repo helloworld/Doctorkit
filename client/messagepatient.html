@@ -1,0 +1,71 @@
+<template name="messagePatient">
+    <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+            <h3><i class="fa fa-angle-right"></i> Patient: {{firstname}} {{lastname}}</h3>
+            <div class="labels">
+                <h4>
+                    <span class="label label-info">{{data.gender}}</span>
+                    <span class="label label-primary">{{data.height}}</span>
+                    <span class="label label-success">{{data.weight}}</span>
+                    <span class="label label-warning">{{data.bloodtype}}</span>
+                </h4>
+            </div>
+            <!-- BASIC FORM ELELEMNTS -->
+            <div class="row mt">
+                <div class="col-lg-12">
+                    <div class="accordion" id="teacherCollapse">
+                        <div class="panel panel-danger">
+                            {{#each users}}
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="teacherCollapse" href="#collapseEditor">Send {{firstname}} {{lastname}} a message: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                                </h3>
+                            </div>
+                            <div id="collapseEditor" class="accordion-body collapse">
+                                <div class="panel-body">
+                                    <div class="well">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="panel panel-warning">
+                                                    <div class="panel-heading">
+                                                        <h3 class="panel-title">Message</h3>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <p>Enter Message:</p>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" rows="3" id="textArea"></textarea>
+                                                        </div>
+                                                        <br>
+                                                        <button type="button" class="btn btn-warning runTest">Send</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="panel panel-success">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Prozac</h3>
+                                </div>
+                                <div class="panel-body">blah</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- col-lg-12-->
+            </div>
+            <!-- /row -->
+        </section>
+        <!--/wrapper -->
+    </section>
+    <!-- /MAIN CONTENT -->
+</template>

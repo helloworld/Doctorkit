@@ -39,6 +39,12 @@ Router.route('/viewPatient/:_id', function() {
         }
     });
 });
+
+Router.route('/messagePatient', function() {
+    name: 'messagePatient';
+    this.layout('ApplicationLayout');
+    this.render('messagePatient');
+});
 // Router.route('/mypatients/:test', function() {
 //     this.layout('ApplicationLayout');
 //     this.render('viewpatient');
@@ -133,5 +139,12 @@ Template.header.events({
 Template.sidebar.helpers({
     user: function() {
         return Meteor.user();
+    }
+});
+Template.messagePatient.helpers({
+    users: function() {
+        return Patients.find({
+            drkey:Meteor.user()._id
+        });
     }
 });
