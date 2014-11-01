@@ -18,11 +18,13 @@
             <div class="row mt">
                 <div class="col-lg-12">
                     <div class="accordion" id="teacherCollapse">
-                        <div class="panel panel-danger">
+                        <div class="panel panel-default">
                             {{#each users}}
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="teacherCollapse" href="#collapseEditor">Send {{firstname}} {{lastname}} a message: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-                                </h3>
+                            <div class="panel-success">
+                                <div class="panel-heading">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="teacherCollapse" href="#collapseEditor"><h3 class="panel-title">Send {{firstname}} {{lastname}} a message:
+                                    </h3></a>
+                                </div>
                             </div>
                             <div id="collapseEditor" class="accordion-body collapse">
                                 <div class="panel-body">
