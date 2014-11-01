@@ -21,3 +21,7 @@
 .labels {
     margin-left: 25px;
 }
+
+.form-control{
+     max-width: 225px;
+}
