@@ -54,11 +54,17 @@
                                             <h4 class="modal-title">Email Report for {{firstname}} {{lastname}}</h4>
                                           </div>
                                           <div class="modal-body">
-                                            <p>One fine body&hellip;</p>
+                                            <div class="form-group">
+                                              <label class="col-sm-2 control-label">Contact Email</label>
+                                              <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="receiver">
+                                              </div>
+                                              <textarea class="form-control sendreminder" rows="3" id="textArea{{receiver}}"></textarea>
+                                            </div>
                                           </div>
                                           <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-primary">Send</button>
+                                            <button type="button" class="btn btn-primary" id="sendEmail">Send</button>
                                           </div>
                                         </div><!-- /.modal-content -->
                                       </div><!-- /.modal-dialog -->

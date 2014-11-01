@@ -169,5 +169,14 @@ Template.messagePatient.events({
             console.log(r);
         });
         $('#modalmessage' + evt.target.dataset.phone).modal('hide');
+    },
+
+    "click #sendEmail": function (evt){
+      if (typeof console !== 'undefined')
+        Meteor.call('sendEmail',
+        $('#receiver').val() + "",
+        $('#email').val() + "",
+        'Message from ' + $('#firstname').val() + ' ' + $('#lastname').val() + '\'s Doctor!',
+        $('#textArea').val() + "");
     }
 })
