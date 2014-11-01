@@ -148,3 +148,10 @@ Template.messagePatient.helpers({
         });
     }
 });
+Template.patients.helpers({
+    users: function() {
+        return Patients.find({
+            drkey:Meteor.user()._id
+        });
+    }
+});
