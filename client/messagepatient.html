@@ -23,11 +23,11 @@
                                             <br><br>
                                         </div>
                                         <div class="modalButtons">
-                                            <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalmessage{{_id}}">Send Message</button>
-                                            <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalemail{{_id}}">Email Report</button>
+                                            <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalmessage{{phonenumber}}">Send Message</button>
+                                            <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalemail{{phonenumber}}">Email Report</button>
                                         </div>
                                     </div>
-                                    <div class="modal fade" id="modalmessage{{_id}}">
+                                    <div class="modal fade" id="modalmessage{{phonenumber}}">
                                       <div class="modal-dialog">
                                         <div class="modal-content">
                                           <div class="modal-header">
@@ -36,7 +36,7 @@
                                           </div>
                                           <div class="modal-body">
                                             <div class="form-group">
-                                              <textarea class="form-control" rows="3" id="textArea{{phonenumber}}"></textarea>
+                                              <textarea class="form-control sendreminder" rows="3" id="textArea{{phonenumber}}"></textarea>
                                             </div>
                                           </div>
                                           <div class="modal-footer">
@@ -46,7 +46,7 @@
                                         </div><!-- /.modal-content -->
                                       </div><!-- /.modal-dialog -->
                                     </div><!-- /.modal -->
-                                    <div class="modal fade" id="modalemail{{_id}}">
+                                    <div class="modal fade" id="modalemail{{phonenumber}}">
                                       <div class="modal-dialog">
                                         <div class="modal-content">
                                           <div class="modal-header">

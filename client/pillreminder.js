@@ -168,5 +168,6 @@ Template.messagePatient.events({
         Meteor.call("sendMessage", evt.target.dataset.phone, message, function(e, r) {
             console.log(r);
         });
+        $('#modalmessage' + evt.target.dataset.phone).modal('hide');
     }
 })
