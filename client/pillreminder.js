@@ -1,13 +1,13 @@
-Router.configure({
-    layoutTemplate: 'ApplicationLayout'
-});
 
 Router.route('/login', function() {
+
     this.render('login');
 });
 
 Router.route('/dashboard', function() {
     name: 'dashboard',
+      this.layout('ApplicationLayout');
+
     this.render('dashboard');
 })
 
@@ -18,6 +18,8 @@ Router.route('/signup', function() {
 
 Router.route('/addPatient', function() {
     name: 'addPatient',
+      this.layout('ApplicationLayout');
+
     this.render('addPatient');
 });
 

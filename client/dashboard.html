@@ -1,8 +1,4 @@
-<template name="ApplicationLayout">
-  {{>header}}
-  {{>sidebar}}
-  {{>yield}}
-</template>
+
 
 <template name="header">
 
@@ -12,7 +8,7 @@
             <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
         </div>
         <!--logo start-->
-        <a href="index.html" class="logo"><b>Pillremind.</b></a>
+        <a href="index.html" class="logo"><b>Doctorkit.</b></a>
         <!--logo end-->
         <div class="nav notify-row" id="top_menu">
             <!--  notification start -->
@@ -164,7 +160,7 @@
         </div>
         <div class="top-menu">
             <ul class="nav pull-right top-menu">
-                <li><a class="logout" href="login.html">Logout</a>
+                <li><a class="logout" href="{{pathFor route='login'}}">Logout</a>
                 </li>
             </ul>
         </div>
@@ -192,11 +188,11 @@
                 <h5 class="centered">Dr. Thupukari</h5>
 
                 <li class="mt">
-                    <a class="active" href="index.html">
+                    <a class="active" href="{{pathFor route='dashboard'}}">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
-                    <a href="{{pathFor route=''}}">
+                    <a href="{{pathFor route='addPatient'}}">
                         <i class="fa fa-dashboard"></i>
                         <span>Edit Patients</span>
                     </a>
