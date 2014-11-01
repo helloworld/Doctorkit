@@ -11,7 +11,18 @@ Router.route('/dashboard', function() {
     this.render('dashboard');
 })
 
+Router.route('/signup', function() {
+    name: 'signup',
+    this.render('signup');
+})
+
 if (Meteor.isClient) {
+
+	Template.login.events({
+		'click #signin': function(event, template) {
+			alert("signin");
+		},
+	});
 
 }
 
