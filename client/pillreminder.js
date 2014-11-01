@@ -1,5 +1,3 @@
-Patients = new Meteor.Collection('patients');
-
 Router.route('/login', function() {
     this.render('login');
 });
@@ -30,66 +28,110 @@ Router.route('/addPatient', function() {
     this.layout('ApplicationLayout');
     this.render('addPatient');
 });
-if (Meteor.isClient) {
-    Template.login.events = {
-        'click #signin': function(event) {
-            event.preventDefault();
-            var username = $('#email').val();
-            var password = $('#password').val();
-            Meteor.loginWithPassword(username, password, function(error) {
+Router.route('/viewPatient/:_id', function() {
+    name: 'viewPatient';
+    this.layout('ApplicationLayout');
+    this.render('viewPatient', {
+        data: function() {
+            return Patients.findOne({
+                _id: this.params._id
+            });
+        }
+    });
+});
+// Router.route('/mypatients/:test', function() {
+//     this.layout('ApplicationLayout');
+//     this.render('viewpatient');
+// });
+patientSub = Meteor.subscribe('patients');
+Template.login.events = {
+    'click #signin': function(event) {
+        event.preventDefault();
+        var username = $('#email').val();
+        var password = $('#password').val();
+        Meteor.loginWithPassword(username, password, function(error) {
+            if (error) {
+                alert(error.reason + 'error');
+            } else {
+                Router.go('/dashboard');
+                alert('You are now logged in.');
+            }
+        });
+    }
+};
+Template.signup.events({
+    'click #signup': function(event, template) {
+        event.preventDefault();
+        var user = {
+            email: $('#email').val(),
+            password: $('#password').val(),
+            profile: {
+                firstname: $("#firstname").val(),
+                lastname: $("#lastname").val()
+            }
+        };
+        if (!user.email || !user.password || !user.profile.firstname || !user.profile.lastname) {
+            alert('Please fill in all fields');
+        } else {
+            Accounts.createUser(user, function(error) {
                 if (error) {
                     alert(error.reason + 'error');
                 } else {
                     Router.go('/dashboard');
-                    alert('You are now logged in.');
                 }
             });
         }
-    };
-    Template.signup.events({
-        'click #signup': function(event, template) {
-            event.preventDefault();
-            var user = {
-                email: $('#email').val(),
-                password: $('#password').val(),
-                profile: {
-                    firstname: $("#firstname").val(),
-                    lastname: $("#lastname").val()
-                }
-            };
-            if (!user.email || !user.password || !user.profile.firstname || !user.profile.lastname) {
-                alert('Please fill in all fields');
-            } else {
-                Accounts.createUser(user, function(error) {
-                    if (error) {
-                        alert(error.reason + 'error');
-                    } else {
-                        Router.go('/dashboard');
-                    }
+    },
+});
+Template.addPatient.events({
+    'click #addPatient': function(event) {
+        event.preventDefault();
+        var firstname = $("#firstname").val();
+        var lastname = $("#lastname").val();
+        var gender = $("#gender").val();
+        var height = $("#height").val();
+        var weight = $("#weight").val();
+        var bloodtype = $("#bloodtype").val();
+        var phonenumber = $("#phonenumber").val();
+        if (!firstname || !lastname || !gender || !height || !weight || !bloodtype) {
+            swal({
+                title: "Error!",
+                text: "Please fill out all fields",
+                type: "error",
+                confirmButtonText: "Ok."
+            });
+        } else {
+            Patients.insert({
+                drkey: Meteor.user()._id,
+                firstname: firstname,
+                lastname: lastname,
+                data: {
+                    gender: gender,
+                    height: height,
+                    weight: weight,
+                    bloodtype: bloodtype,
+                },
+                phonenumber: phonenumber,
+            }, function(err, res) {
+                swal({
+                    title: "New User Created",
+                    text: "Next, add their prescriptions",
+                    type: "success",
+                    confirmButtonText: "Continue",
+                }, function() {
+                    Router.go("/viewPatient/" + res)
                 });
-            }
-		},
-	});
-
-    Template.addPatient.events({
-        'click #addPatient' : function() {
-            var first = $("#firstname").val();
-            var last = $("#lastname").val();
-            var gender = $("#gender").val();
-            var height = $("#height").val();
-            var weight = $("#weight").val();
-            var bloodType = $("#bloodtype").val();
+            });
         }
-    })
-
-    Template.header.events({
-        'click .logout': function() {
-            Meteor.logout();
-        }
-    });
-}
-if (Meteor.isServer) {
-    Meteor.startup(function() {
-        // code to run on server at startup
-    });
-}
+    }
+});
+Template.header.events({
+    'click .logout': function() {
+        Meteor.logout();
+    }
+});
+Template.sidebar.helpers({
+    user: function() {
+        return Meteor.user();
+    }
+});
