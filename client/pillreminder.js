@@ -1,3 +1,4 @@
+Patients = new Meteor.Collection('patients');
 
 Router.route('/login', function() {
 
@@ -66,7 +67,18 @@ if (Meteor.isClient) {
                 });
             }
 		},
-	})
+	});
+
+    Template.addPatient.events({
+        'click #addPatient' : function() {
+            var first = $("#firstname").val();
+            var last = $("#lastname").val();
+            var gender = $("#gender").val();
+            var height = $("#height").val();
+            var weight = $("#weight").val();
+            var bloodType = $("#bloodtype").val();
+        }
+    })
 
 }
 
