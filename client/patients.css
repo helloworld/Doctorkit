@@ -12,8 +12,8 @@
 .patient-title {
     width: 77%;
     top: 50%;
-    transform: translateY(24%);
-    -webkit-transform: translateY(24%);
+    transform: translateY(14%);
+    -webkit-transform: translateY(14%);
     margin-left: 7px;
     display: inline-block;
 }
@@ -22,6 +22,10 @@
     margin-left: 25px;
 }
 
-.form-control{
+.sendreminder{
+    max-width: 565px;
+}
+
+.scribble{
      max-width: 225px;
 }
