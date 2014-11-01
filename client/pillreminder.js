@@ -43,7 +43,7 @@ Router.route('/viewPatient/:_id', function() {
 //     this.layout('ApplicationLayout');
 //     this.render('viewpatient');
 // });
-patientSub = Meteor.subscribe('patients');
+// patientSub = Meteor.subscribe('patients');
 Template.login.events = {
     'click #signin': function(event) {
         event.preventDefault();
@@ -135,3 +135,8 @@ Template.sidebar.helpers({
         return Meteor.user();
     }
 });
+Template.viewPatient.events({
+    'click #getPrescription': function() {
+        var prestext = $("#prescriptionText").val();
+    }
+})

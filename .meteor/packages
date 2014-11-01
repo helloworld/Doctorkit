@@ -9,4 +9,7 @@ insecure
 iron:router
 accounts-password
 d3
+http
+peerlibrary:xml2js
+jquery
 
