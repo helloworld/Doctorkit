@@ -162,7 +162,11 @@ Template.patients.helpers({
 });
 
 Template.messagePatient.events({
-    //  Meteor.call("sendMessage", phone, string, function(e, r) {
-    //             console.log(r);
-    // });
+    "click #sendMessage": function (evt) {
+        console.log(evt);
+        var message = $('#textArea'+evt.target.dataset.phone).val();
+        Meteor.call("sendMessage", evt.target.dataset.phone, message, function(e, r) {
+            console.log(r);
+        });
+    }
 })

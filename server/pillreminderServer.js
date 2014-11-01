@@ -29,6 +29,8 @@ Meteor.methods({
         data = JSON.parse(Assets.getText("credentials.json"));
         ACCOUNT_SID = data.sid;
         AUTH_TOKEN = data.authToken;
+        console.log(number)
+
         var result = Meteor.http.post('https://api.twilio.com/2010-04-01/Accounts/' + ACCOUNT_SID + '/Messages/', {
             params: {
                 From: "2027602988",
@@ -37,6 +39,9 @@ Meteor.methods({
             },
             auth: ACCOUNT_SID + ":" + AUTH_TOKEN
         });
+                        console.log("SUCCESS3")
+
+        console.log(result);
         return result;
     },
 });
