@@ -160,3 +160,9 @@ Template.patients.helpers({
         });
     }
 });
+
+Template.messagePatient.events({
+    //  Meteor.call("sendMessage", phone, string, function(e, r) {
+    //             console.log(r);
+    // });
+})
