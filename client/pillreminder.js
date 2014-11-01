@@ -160,3 +160,13 @@ Template.patients.helpers({
         });
     }
 });
+
+Template.messagePatient.events({
+    "click #sendMessage": function (evt) {
+        console.log(evt);
+        var message = $('#textArea'+evt.target.dataset.phone).val();
+        Meteor.call("sendMessage", evt.target.dataset.phone, message, function(e, r) {
+            console.log(r);
+        });
+    }
+})

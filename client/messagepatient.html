@@ -5,15 +5,6 @@
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
-            <h3><i class="fa fa-angle-right"></i> Patient: {{firstname}} {{lastname}}</h3>
-            <div class="labels">
-                <h4>
-                    <span class="label label-info">{{data.gender}}</span>
-                    <span class="label label-primary">{{data.height}}</span>
-                    <span class="label label-success">{{data.weight}}</span>
-                    <span class="label label-warning">{{data.bloodtype}}</span>
-                </h4>
-            </div>
             <!-- BASIC FORM ELELEMNTS -->
             <div class="row mt">
                 <div class="col-lg-12">
@@ -32,11 +23,11 @@
                                             <br><br>
                                         </div>
                                         <div class="modalButtons">
-                                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal{{firstname}}{{lastname}}message">Send Message</button>
-                                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal{{firstname}}{{lastname}}email">Email Report</button>
+                                            <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalmessage{{_id}}">Send Message</button>
+                                            <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#modalemail{{_id}}">Email Report</button>
                                         </div>
                                     </div>
-                                    <div class="modal fade" id="modal{{firstname}}{{lastname}}message">
+                                    <div class="modal fade" id="modalmessage{{_id}}">
                                       <div class="modal-dialog">
                                         <div class="modal-content">
                                           <div class="modal-header">
@@ -45,22 +36,26 @@
                                           </div>
                                           <div class="modal-body">
                                             <div class="form-group">
+<<<<<<< HEAD
                                                 <textarea class="form-control sendreminder" rows="3" id="textArea"></textarea>
+=======
+                                              <textarea class="form-control" rows="3" id="textArea{{phonenumber}}"></textarea>
+>>>>>>> FETCH_HEAD
                                             </div>
                                           </div>
                                           <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                            <button type="button" class="btn btn-primary">Send</button>
+                                            <button type="button" class="btn btn-primary" id="sendMessage" data-phone="{{phonenumber}}">Send</button>
                                           </div>
                                         </div><!-- /.modal-content -->
                                       </div><!-- /.modal-dialog -->
                                     </div><!-- /.modal -->
-                                    <div class="modal fade" id="modal{{firstname}}{{lastname}}email">
+                                    <div class="modal fade" id="modalemail{{_id}}">
                                       <div class="modal-dialog">
                                         <div class="modal-content">
                                           <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title">Email Report</h4>
+                                            <h4 class="modal-title">Email Report for {{firstname}} {{lastname}}</h4>
                                           </div>
                                           <div class="modal-body">
                                             <p>One fine body&hellip;</p>
