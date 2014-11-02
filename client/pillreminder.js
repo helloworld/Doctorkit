@@ -5,6 +5,7 @@ Router.route('/signup', function() {
     name: 'signup',
     this.render('signup');
 });
+
 Router.onBeforeAction(function() {
     // all properties available in the route function
     // are also available here such as this.params
@@ -17,6 +18,12 @@ Router.onBeforeAction(function() {
     }
 }, {
     except: ['login', 'signup']
+});
+
+Router.route('/', function() {
+    name: 'dashboard';
+    this.layout('ApplicationLayout');
+    this.render('dashboard');
 });
 Router.route('/dashboard', function() {
     name: 'dashboard';
