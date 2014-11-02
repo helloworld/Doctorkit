@@ -186,16 +186,42 @@ Template.viewPatient.events({
             var string = res[5] + res[7] + res[9] + res[11];
             console.log(string);
             $("#wolfram").html(string);
-            var num;
-            if(res[9] == "once"){
-                num=1;
+            var frequency;
+            if (string.indexOf("twice") > -1) {
+                frequency = 2;
+            } else if (string.indexOf("every morning") > -1) {
+                frequency = 1;
             }
-            else if(res[9] == "twice"){
-                num=2;
+            for (i = 1; i <= frequency; i++) {
+                if (i > 1) {
+                    offset = "";
+                    brek = "<br><br><br>"
+                } else {
+                    offset = ""
+                    brek = ""
+                }
+                $("#timeSelectors").html($("#timeSelectors").html() + brek + "<div class='col-sm-3 " + offset + "'> <input type='number' class='form-control' id='hour" + i + "' min='0' max='12'> Hour </div> <div class='col-sm-3'> <input type='number' class='form-control' id='min" + i + "' min='0' max='59'> Minutes </div> <div class='col-sm-3'> <select class='form-control' id='Time" + i + "'> <option>AM</option> <option>PM</option> </select> </div>");
             }
-            else{
-                num=res[9];
-            }
+            $("#timeSelectors").html($("#timeSelectors").html() + "<br><br><br><br><br><button type='button' id='insertPrescriptions' data-number='" + frequency + "' class='btn btn-warning'>Finalize Prescription</button>");
         });
     },
+    'click #insertPrescriptions': function(event) {
+        frequency = event.currentTarget.dataset.number;
+        var link = window.location + ""
+        link = link.split("/");
+        link = link[link.length - 1];
+        for (i = 1; i <= frequency; i++) {
+            var hour = $("#hour" + i).val();
+            var min = $("#min" + i).val();
+            var name = $("#prescriptionText").val().split(" ")[0]
+            var user = link
+            var record = {
+                hour: hour,
+                min: min,
+                name: name,
+                user: user,
+            }
+            Medications.insert(record)
+        }
+    }
 })
