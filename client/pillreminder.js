@@ -186,6 +186,16 @@ Template.viewPatient.events({
             var string = res[5] + res[7] + res[9] + res[11];
             console.log(string);
             $("#wolfram").html(string);
+            var num;
+            if(res[9] == "once"){
+                num=1;
+            }
+            else if(res[9] == "twice"){
+                num=2;
+            }
+            else{
+                num=res[9];
+            }
         });
     },
 })
