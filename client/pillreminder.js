@@ -98,6 +98,7 @@ Template.addPatient.events({
         var weight = $("#weight").val();
         var bloodtype = $("#bloodtype").val();
         var phonenumber = $("#phonenumber").val();
+        var percentage = '0';
         if (!firstname || !lastname || !gender || !height || !weight || !bloodtype) {
             swal({
                 title: "Error!",
@@ -115,6 +116,7 @@ Template.addPatient.events({
                     height: height,
                     weight: weight,
                     bloodtype: bloodtype,
+                    percentage: percentage,
                 },
                 phonenumber: phonenumber,
             }, function(err, res) {
