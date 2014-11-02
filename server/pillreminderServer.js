@@ -19,8 +19,7 @@ Meteor.methods({
         data = JSON.parse(Assets.getText("credentials.json"));
         appID = data.appID;
         string.replace("\s", "+");
-        //console.log(string)
-        var url = "http://api.wolframalpha.com/v2/query?appid=" + appID + "&input=sig+code+Metformin+500mg.+1+tab+PO+BID+WF.+Disp+30";
+        var url = "http://api.wolframalpha.com/v2/query?appid=" + appID + "&input=sig+code+"+string;
         var result = HTTP.call("GET", url);
         result = result.content + "";
         console.log(result);
