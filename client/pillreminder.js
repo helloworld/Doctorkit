@@ -20,11 +20,7 @@ Router.onBeforeAction(function() {
     except: ['login', 'signup']
 });
 
-Router.route('/', function() {
-    name: 'dashboard';
-    this.layout('ApplicationLayout');
-    this.render('dashboard');
-});
+
 Router.route('/dashboard', function() {
     name: 'dashboard';
     this.layout('ApplicationLayout');
