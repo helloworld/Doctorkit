@@ -140,6 +140,17 @@ Template.sidebar.helpers({
         return Meteor.user();
     }
 });
+Template.viewPatient.helpers({
+    'meds': function() {
+        var link = window.location + ""
+        link = link.split("/");
+        link = link[link.length - 1];
+        curUserId = link
+        return Medications.find({
+            user: curUserId
+        });
+    }
+})
 Template.viewPatient.events({
     'click #getPrescription': function() {
         var prestext = $("#prescriptionText").val();
@@ -215,13 +226,17 @@ Template.viewPatient.events({
             var min = $("#min" + i).val();
             var name = $("#prescriptionText").val().split(" ")[0]
             var user = link
-            var record = {
-                hour: hour,
-                min: min,
-                name: name,
-                user: user,
-            }
-            Medications.insert(record)
+            var description = Meteor.call('getWolframDescription', $("#prescriptionText").val(), function(err, res) {
+                var record = {
+                    hour: hour,
+                    min: min,
+                    name: name,
+                    user: user,
+                    description: res,
+                }
+                Medications.insert(record)
+                alert("success");
+            })
         }
     }
 })
