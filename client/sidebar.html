@@ -1,0 +1,42 @@
+<template name="sidebar">
+
+    <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar" class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+
+                <p class="centered">
+                    <a href="profile.html">
+                        <img src="assets/img/ui-sam.jpg" class="img-circle" width="60">
+                    </a>
+                </p>
+                <h5 class="centered">Dr. {{currentUser.profile.lastname}}</h5>
+
+                <li class="mt">
+                    <a class="active" href="{{pathFor route='dashboard'}}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="{{pathFor route='addPatient'}}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Edit Patients</span>
+                    </a>
+                    <a class="active" href="{{pathFor route='messagePatient'}}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Contact Patient</span>
+                    </a>
+                </li>
+
+
+
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+
+</template>
