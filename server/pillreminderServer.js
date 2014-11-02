@@ -29,9 +29,10 @@ Meteor.methods({
         result = result.substring(result.indexOf("<plaintext>"), result.length);
         result = result.substring(0, result.indexOf("</plaintext>"))
         result = result.replace("<plaintext>", "");
-        result = result.replace("\n", " ");
+        result = result.replace(/(\r\n|\n|\r)/gm,"")
         array = result.split("| ");
         console.log(array);
+        return array;
     },
     sendMessage: function(number, message) {
         var data = {};
@@ -48,7 +49,6 @@ Meteor.methods({
             },
             auth: ACCOUNT_SID + ":" + AUTH_TOKEN
         });
-
         console.log(result);
         return result;
     },

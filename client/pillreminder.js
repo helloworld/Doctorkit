@@ -5,7 +5,6 @@ Router.route('/signup', function() {
     name: 'signup',
     this.render('signup');
 });
-
 Router.onBeforeAction(function() {
     // all properties available in the route function
     // are also available here such as this.params
@@ -19,8 +18,6 @@ Router.onBeforeAction(function() {
 }, {
     except: ['login', 'signup']
 });
-
-
 Router.route('/dashboard', function() {
     name: 'dashboard';
     this.layout('ApplicationLayout');
@@ -42,7 +39,6 @@ Router.route('/viewPatient/:_id', function() {
         }
     });
 });
-
 Router.route('/messagePatient', function() {
     name: 'messagePatient';
     this.layout('ApplicationLayout');
@@ -98,7 +94,7 @@ Template.addPatient.events({
         var firstname = $("#firstname").val();
         var lastname = $("#lastname").val();
         var gender = $("#gender").val();
-        var height = $("#feet").val()+'\' ' + $("#inches").val()+'\"';
+        var height = $("#feet").val() + '\' ' + $("#inches").val() + '\"';
         var weight = $("#weight").val();
         var bloodtype = $("#bloodtype").val();
         var phonenumber = $("#phonenumber").val();
@@ -152,34 +148,44 @@ Template.viewPatient.events({
 Template.messagePatient.helpers({
     users: function() {
         return Patients.find({
-            drkey:Meteor.user()._id
+            drkey: Meteor.user()._id
         });
     }
 });
 Template.patients.helpers({
     users: function() {
         return Patients.find({
-            drkey:Meteor.user()._id
+            drkey: Meteor.user()._id
         });
     }
 });
-
+Template.patients.events({
+    'click #patientName': function(event) {
+        Router.go("/viewPatient/" + event.currentTarget.dataset.id)
+    }
+});
 Template.messagePatient.events({
-    "click #sendMessage": function (evt) {
+    'click #sendMessage': function(evt) {
         console.log(evt);
-        var message = $('#textArea'+evt.target.dataset.phone).val();
+        var message = $('#textArea' + evt.target.dataset.phone).val();
         Meteor.call("sendMessage", evt.target.dataset.phone, message, function(e, r) {
             console.log(r);
         });
         $('#modalmessage' + evt.target.dataset.phone).modal('hide');
     },
-
-    "click #sendEmail": function (evt){
-      if (typeof console !== 'undefined')
-        Meteor.call('sendEmail',
-        $('#receiver').val() + "",
-        $('#email').val() + "",
-        'Message from ' + $('#firstname').val() + ' ' + $('#lastname').val() + '\'s Doctor!',
-        $('#textArea').val() + "");
+    "click #sendEmail": function(evt) {
+        if (typeof console !== 'undefined') Meteor.call('sendEmail', $('#receiver').val() + "", $('#email').val() + "", 'Message from ' + $('#firstname').val() + ' ' + $('#lastname').val() + '\'s Doctor!', $('#textArea').val() + "");
     }
+})
+Template.viewPatient.events({
+    'click #getPrescription': function() {
+        var string = $("#prescriptionText").val();
+        $("#wolfram").html("Loading...");
+        Meteor.call('getWolfram', string, function(err, res) {
+            console.log(res);
+            var string = res[5] + res[7] + res[9] + res[11];
+            console.log(string);
+            $("#wolfram").html(string);
+        });
+    },
 })

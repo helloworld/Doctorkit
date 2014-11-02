@@ -1,60 +1,23 @@
 <template name="dashboard">
-
     <section id="container">
-
-      <!-- **********************************************************************************************************************************************************
+        <!-- **********************************************************************************************************************************************************
       MAIN CONTENT
       *********************************************************************************************************************************************************** -->
         <!--main content start-->
         <section id="main-content">
             <section class="wrapper">
-
                 <div class="row">
-
-
                     <div class="col-lg-9 main-chart">
-
-                        <div class="row mtbox">
-                            <div class="col-md-2 col-sm-2 col-md-offset-4 box0">
-                                <div class="box1">
-                                    <span class="li_heart"></span>
-                                    <h3>43</h3>
-                                </div>
-                                <p>43 of your patients are using their medications on time!</p>
-                            </div>
-                            <div class="col-md-2 col-sm-2 box0">
-                                <div class="box1">
-                                    <span class="li_fire"></span>
-                                    <h3>48</h3>
-                                </div>
-                                <p>48 of your patients are failing to use their medication on time.</p>
-                            </div>
-
-
-                        </div>
+                        <div class="row">{{>patients}}</div>
                         <!-- /row mt -->
-
-
-                        <div class="row">
-
-                            {{>patients}}
-
-
-                        </div>
-                        <!-- /row mt -->
-
                     </div>
                     <!-- /col-lg-9 END SECTION MIDDLE -->
-
-
                     <!-- **********************************************************************************************************************************************************
       RIGHT SIDEBAR CONTENT
       *********************************************************************************************************************************************************** -->
-
                     <div class="col-lg-3 ds">
                         <!--COMPLETED ACTIONS DONUTS CHART-->
                         <h3>NOTIFICATIONS</h3>
-
                         <!-- First Action -->
                         <div class="desc">
                             <div class="thumb">
@@ -64,8 +27,7 @@
                             <div class="details">
                                 <p>
                                     <muted>2 Minutes Ago</muted>
-                                    <br/>
-                                    <a href="#">James Brown</a> subscribed to your newsletter.
+                                    <br/> <a href="#">James Brown</a> subscribed to your newsletter.
                                     <br/>
                                 </p>
                             </div>
@@ -79,8 +41,7 @@
                             <div class="details">
                                 <p>
                                     <muted>3 Hours Ago</muted>
-                                    <br/>
-                                    <a href="#">Diana Kennedy</a> purchased a year subscription.
+                                    <br/> <a href="#">Diana Kennedy</a> purchased a year subscription.
                                     <br/>
                                 </p>
                             </div>
@@ -94,8 +55,7 @@
                             <div class="details">
                                 <p>
                                     <muted>7 Hours Ago</muted>
-                                    <br/>
-                                    <a href="#">Brandon Page</a> purchased a year subscription.
+                                    <br/> <a href="#">Brandon Page</a> purchased a year subscription.
                                     <br/>
                                 </p>
                             </div>
@@ -109,8 +69,7 @@
                             <div class="details">
                                 <p>
                                     <muted>11 Hours Ago</muted>
-                                    <br/>
-                                    <a href="#">Mark Twain</a> commented your post.
+                                    <br/> <a href="#">Mark Twain</a> commented your post.
                                     <br/>
                                 </p>
                             </div>
@@ -124,8 +83,7 @@
                             <div class="details">
                                 <p>
                                     <muted>18 Hours Ago</muted>
-                                    <br/>
-                                    <a href="#">Daniel Pratt</a> purchased a wallet in your store.
+                                    <br/> <a href="#">Daniel Pratt</a> purchased a wallet in your store.
                                     <br/>
                                 </p>
                             </div>
@@ -136,14 +94,11 @@
                 <!--/row -->
             </section>
         </section>
-
         <!--main content end-->
         <!--footer start-->
         <footer class="site-footer">
-            <div class="text-center">
-                2014 - Alvarez.is
-                <a href="index.html#" class="go-top">
-                    <i class="fa fa-angle-up"></i>
+            <div class="text-center">2014 - Sashank Thupukari
+                <a href="index.html#" class="go-top"> <i class="fa fa-angle-up"></i>
                 </a>
             </div>
         </footer>
